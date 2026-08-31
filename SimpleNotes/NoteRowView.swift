@@ -69,7 +69,6 @@ struct NoteRowView: View {
 
             // Footer metadata
             HStack {
-                let charCount = note.body.count
                 let wordCount = note.body.split(separator: " ").count
 
                 Text("\(wordCount) words")
