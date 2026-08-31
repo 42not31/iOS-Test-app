@@ -14,6 +14,16 @@
 		7A8B9C0D1000000000000105 /* NoteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8B9C0D2000000000000105 /* NoteRowView.swift */; };
 		7A8B9C0D1000000000000106 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A8B9C0D2000000000000106 /* Assets.xcassets */; };
 		7A8B9C0D1000000000000107 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A8B9C0D2000000000000107 /* Preview Assets.xcassets */; };
+		7A8B9C0D1000000000000108 /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8B9C0D2000000000000109 /* Folder.swift */; };
+		7A8B9C0D1000000000000109 /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8B9C0D200000000000010A /* ChecklistItem.swift */; };
+		7A8B9C0D100000000000010A /* LiquidGlassTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8B9C0D200000000000010B /* LiquidGlassTheme.swift */; };
+		7A8B9C0D100000000000010B /* LiquidGlassComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8B9C0D200000000000010C /* LiquidGlassComponents.swift */; };
+		7A8B9C0D100000000000010C /* NotesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8B9C0D200000000000010D /* NotesListView.swift */; };
+		7A8B9C0D100000000000010D /* FoldersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8B9C0D200000000000010E /* FoldersView.swift */; };
+		7A8B9C0D100000000000010E /* FolderEditSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8B9C0D200000000000010F /* FolderEditSheet.swift */; };
+		7A8B9C0D100000000000010F /* ChecklistsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8B9C0D2000000000000110 /* ChecklistsView.swift */; };
+		7A8B9C0D1000000000000110 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8B9C0D2000000000000111 /* SettingsView.swift */; };
+		7A8B9C0D1000000000000111 /* GlassTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8B9C0D2000000000000112 /* GlassTabBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +35,16 @@
 		7A8B9C0D2000000000000106 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A8B9C0D2000000000000107 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7A8B9C0D2000000000000108 /* SimpleNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A8B9C0D2000000000000109 /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
+		7A8B9C0D200000000000010A /* ChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
+		7A8B9C0D200000000000010B /* LiquidGlassTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquidGlassTheme.swift; sourceTree = "<group>"; };
+		7A8B9C0D200000000000010C /* LiquidGlassComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquidGlassComponents.swift; sourceTree = "<group>"; };
+		7A8B9C0D200000000000010D /* NotesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListView.swift; sourceTree = "<group>"; };
+		7A8B9C0D200000000000010E /* FoldersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldersView.swift; sourceTree = "<group>"; };
+		7A8B9C0D200000000000010F /* FolderEditSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderEditSheet.swift; sourceTree = "<group>"; };
+		7A8B9C0D2000000000000110 /* ChecklistsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistsView.swift; sourceTree = "<group>"; };
+		7A8B9C0D2000000000000111 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		7A8B9C0D2000000000000112 /* GlassTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassTabBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,9 +71,19 @@
 			children = (
 				7A8B9C0D2000000000000101 /* SimpleNotesApp.swift */,
 				7A8B9C0D2000000000000102 /* Note.swift */,
+				7A8B9C0D2000000000000109 /* Folder.swift */,
+				7A8B9C0D200000000000010A /* ChecklistItem.swift */,
+				7A8B9C0D200000000000010B /* LiquidGlassTheme.swift */,
+				7A8B9C0D200000000000010C /* LiquidGlassComponents.swift */,
 				7A8B9C0D2000000000000103 /* ContentView.swift */,
-				7A8B9C0D2000000000000104 /* NoteEditorView.swift */,
 				7A8B9C0D2000000000000105 /* NoteRowView.swift */,
+				7A8B9C0D2000000000000104 /* NoteEditorView.swift */,
+				7A8B9C0D200000000000010D /* NotesListView.swift */,
+				7A8B9C0D200000000000010E /* FoldersView.swift */,
+				7A8B9C0D200000000000010F /* FolderEditSheet.swift */,
+				7A8B9C0D2000000000000110 /* ChecklistsView.swift */,
+				7A8B9C0D2000000000000111 /* SettingsView.swift */,
+				7A8B9C0D2000000000000112 /* GlassTabBar.swift */,
 				7A8B9C0D2000000000000106 /* Assets.xcassets */,
 				7A8B9C0D4000000000000103 /* Preview Content */,
 			);
@@ -148,9 +178,19 @@
 			files = (
 				7A8B9C0D1000000000000101 /* SimpleNotesApp.swift in Sources */,
 				7A8B9C0D1000000000000102 /* Note.swift in Sources */,
+				7A8B9C0D1000000000000108 /* Folder.swift in Sources */,
+				7A8B9C0D1000000000000109 /* ChecklistItem.swift in Sources */,
+				7A8B9C0D100000000000010A /* LiquidGlassTheme.swift in Sources */,
+				7A8B9C0D100000000000010B /* LiquidGlassComponents.swift in Sources */,
 				7A8B9C0D1000000000000103 /* ContentView.swift in Sources */,
-				7A8B9C0D1000000000000104 /* NoteEditorView.swift in Sources */,
 				7A8B9C0D1000000000000105 /* NoteRowView.swift in Sources */,
+				7A8B9C0D1000000000000104 /* NoteEditorView.swift in Sources */,
+				7A8B9C0D100000000000010C /* NotesListView.swift in Sources */,
+				7A8B9C0D100000000000010D /* FoldersView.swift in Sources */,
+				7A8B9C0D100000000000010E /* FolderEditSheet.swift in Sources */,
+				7A8B9C0D100000000000010F /* ChecklistsView.swift in Sources */,
+				7A8B9C0D1000000000000110 /* SettingsView.swift in Sources */,
+				7A8B9C0D1000000000000111 /* GlassTabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

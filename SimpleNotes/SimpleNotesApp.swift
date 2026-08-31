@@ -7,6 +7,6 @@ struct SimpleNotesApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(for: Note.self)
+        .modelContainer(for: [Note.self, Folder.self, ChecklistItem.self])
     }
 }
