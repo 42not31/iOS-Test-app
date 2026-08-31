@@ -1,0 +1,49 @@
+workflows:
+  SimpleNotes — unsigned device IPA:
+    name: "SimpleNotes — unsigned device IPA"
+    max_build_duration: 60
+    environment:
+      groups: []
+      xcode_version: "16.0"
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: "*"
+          include: true
+          source: true
+    scripts:
+      - name: Install dependencies
+        script: |
+          # No external dependencies to install
+          echo "No dependencies to install."
+      - name: Build unsigned device IPA
+        script: |
+          set -e
+          xcodebuild \
+            -project SimpleNotes.xcodeproj \
+            -scheme SimpleNotes \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination "generic/platform=iOS" \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO \
+            ONLY_ACTIVE_ARCH=NO \
+            clean build \
+            | xcpretty
+      - name: Package unsigned IPA
+        script: |
+          set -e
+          APP_PATH=$(find DerivedData/Build/Products -name "SimpleNotes.app" -type d | head -1)
+          if [ -z "$APP_PATH" ]; then
+            echo "ERROR: SimpleNotes.app not found"
+            exit 1
+          fi
+          mkdir -p Payload
+          cp -r "$APP_PATH" Payload/
+          zip -r SimpleNotes-unsigned.ipa Payload
+          rm -rf Payload
+    artifacts:
+      paths:
+        - SimpleNotes-unsigned.ipa
