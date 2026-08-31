@@ -1,10 +1,13 @@
 workflows:
-  SimpleNotes — unsigned device IPA:
+  SimpleNotes:
     name: "SimpleNotes — unsigned device IPA"
     max_build_duration: 60
+    instance_type: mac_mini_m2
+
     environment:
       groups: []
-      xcode_version: "16.0"
+      xcode: "16.0"
+
     triggering:
       events:
         - push
@@ -12,38 +15,46 @@ workflows:
         - pattern: "*"
           include: true
           source: true
+
     scripts:
       - name: Install dependencies
         script: |
-          # No external dependencies to install
+          set -euo pipefail
           echo "No dependencies to install."
+
       - name: Build unsigned device IPA
         script: |
-          set -e
+          set -euo pipefail
+          rm -rf build Payload SimpleNotes-unsigned.ipa
           xcodebuild \
             -project SimpleNotes.xcodeproj \
             -scheme SimpleNotes \
             -configuration Release \
             -sdk iphoneos \
             -destination "generic/platform=iOS" \
+            -derivedDataPath build/derived-data \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGNING_ALLOWED=NO \
+            DEVELOPMENT_TEAM="" \
             ONLY_ACTIVE_ARCH=NO \
-            clean build \
-            | xcpretty
+            clean build
+
       - name: Package unsigned IPA
         script: |
-          set -e
-          APP_PATH=$(find DerivedData/Build/Products -name "SimpleNotes.app" -type d | head -1)
-          if [ -z "$APP_PATH" ]; then
-            echo "ERROR: SimpleNotes.app not found"
+          set -euo pipefail
+          APP_PATH="build/derived-data/Build/Products/Release-iphoneos/SimpleNotes.app"
+          if [ ! -d "$APP_PATH" ]; then
+            echo "ERROR: $APP_PATH not found"
+            find build -name "SimpleNotes.app" -type d -print || true
             exit 1
           fi
+          rm -rf Payload SimpleNotes-unsigned.ipa
           mkdir -p Payload
-          cp -r "$APP_PATH" Payload/
-          zip -r SimpleNotes-unsigned.ipa Payload
+          cp -R "$APP_PATH" Payload/
+          ditto -c -k --keepParent Payload SimpleNotes-unsigned.ipa
+          unzip -t SimpleNotes-unsigned.ipa >/dev/null
           rm -rf Payload
+
     artifacts:
-      paths:
-        - SimpleNotes-unsigned.ipa
+      - "SimpleNotes-unsigned.ipa"
