@@ -33,7 +33,7 @@ struct NoteEditorView: View {
         Form {
             Section {
                 TextField("Title", text: $title, axis: .vertical)
-                    .font(.title2.weight(.bold).rounded())
+                    .font(.system(.title2, design: .rounded).weight(.bold))
                 HStack {
                     Image(systemName: "folder").foregroundStyle(.secondary)
                     Picker("Folder", selection: $selectedFolder) {
@@ -135,8 +135,4 @@ struct NoteEditorView: View {
         }
     }
     private func hideKeyboard() { UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil) }
-}
-
-private extension View {
-    func rounded() -> Self { self }
 }
