@@ -1,34 +1,29 @@
 import SwiftUI
-import SwiftData
 
 struct ContentView: View {
     @AppStorage("app_theme_mode") private var themeModeRaw = AppThemeMode.system.rawValue
-    @State private var selectedTab: AppTab = .notes
+    @AppStorage("accent_color_hex") private var accentHex = "00D2FF"
 
     private var themeMode: AppThemeMode {
         AppThemeMode(rawValue: themeModeRaw) ?? .system
     }
 
     var body: some View {
-        ZStack(alignment: .bottom) {
-            Group {
-                switch selectedTab {
-                case .notes:
-                    NotesListView()
-                case .folders:
-                    FoldersView()
-                case .checklist:
-                    ChecklistsView()
-                case .settings:
-                    SettingsView()
-                }
+        TabView {
+            Tab("Notes", systemImage: "doc.text") {
+                NotesListView()
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-
-            GlassTabBar(selectedTab: $selectedTab)
-                .padding(.bottom, 8)
+            Tab("Folders", systemImage: "folder") {
+                FoldersView()
+            }
+            Tab("Checklist", systemImage: "checklist") {
+                ChecklistsView()
+            }
+            Tab("Settings", systemImage: "gearshape") {
+                SettingsView()
+            }
         }
         .preferredColorScheme(themeMode.colorScheme)
-        .animation(.easeInOut(duration: 0.2), value: selectedTab)
+        .tint(Color(hex: accentHex))
     }
 }
