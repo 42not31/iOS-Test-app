@@ -7,12 +7,12 @@ struct NoteEditorView: View {
 
     private var note: Note?
     @State private var title: String
-    @State private var body: String
+    @State private var noteBody: String
 
     init(note: Note? = nil) {
         self.note = note
         _title = State(initialValue: note?.title ?? "")
-        _body = State(initialValue: note?.body ?? "")
+        _noteBody = State(initialValue: note?.body ?? "")
     }
 
     var body: some View {
@@ -20,10 +20,10 @@ struct NoteEditorView: View {
             TextField("Title", text: $title, prompt: Text("Untitled"))
                 .font(.headline)
 
-            TextEditor(text: $body)
+            TextEditor(text: $noteBody)
                 .frame(minHeight: 200)
                 .overlay(alignment: .topLeading) {
-                    if body.isEmpty {
+                    if noteBody.isEmpty {
                         Text("Start writing...")
                             .foregroundStyle(.secondary)
                             .padding(.top, 8)
@@ -45,7 +45,7 @@ struct NoteEditorView: View {
                     dismiss()
                 }
                 .disabled(title.trimmingCharacters(in: .whitespaces).isEmpty
-                          && body.trimmingCharacters(in: .whitespaces).isEmpty)
+                          && noteBody.trimmingCharacters(in: .whitespaces).isEmpty)
             }
         }
     }
@@ -53,10 +53,10 @@ struct NoteEditorView: View {
     private func save() {
         if let note {
             note.title = title
-            note.body = body
+            note.body = noteBody
             note.updatedAt = .now
         } else {
-            let note = Note(title: title, body: body)
+            let note = Note(title: title, body: noteBody)
             modelContext.insert(note)
         }
     }
